@@ -27,6 +27,22 @@ namespace HashTable
             int position = hash % size;        //0 to 5
             return Math.Abs(position);
         }
+        public LinkedList<KeyValue<K, V>> GetArrayPositionAndLinkedList(K key)
+        {
+            int position = GetArrayPosition(key);       //index number of array
+            LinkedList<KeyValue<K, V>> linkedList = GetLinkedList(position);
+            return linkedList;
+        }
+        protected LinkedList<KeyValue<K, V>> GetLinkedList(int position)
+        {
+            LinkedList<KeyValue<K, V>> linkedList = items[position];
+            if (linkedList == null)
+            {
+                linkedList = new LinkedList<KeyValue<K, V>>();
+                items[position] = linkedList;
+            }
+            return linkedList;
+        }
         public V Get(K key)
         {
             var linkedList = GetArrayPositionAndLinkedList(key);
@@ -67,12 +83,8 @@ namespace HashTable
             }
             return false;
         }
-        public  LinkedList<KeyValue<K, V>> GetArrayPositionAndLinkedList(K key)
-        {
-            int position = GetArrayPosition(key);       //index number of array
-            LinkedList<KeyValue<K, V>> linkedList = GetLinkedList(position);
-            return linkedList;
-        }
+        
+
         public void Remove(K key)
         {
             var linkedList = GetArrayPositionAndLinkedList(key);
@@ -91,16 +103,6 @@ namespace HashTable
                 linkedList.Remove(foundItem);
                 Console.WriteLine("Removed successfuy with key: " + foundItem.Key);
             }
-        }
-        protected LinkedList<KeyValue<K, V>> GetLinkedList(int position)
-        {
-            LinkedList<KeyValue<K, V>> linkedList = items[position]; 
-            if (linkedList == null)
-            {
-                linkedList = new LinkedList<KeyValue<K, V>>();
-                items[position] = linkedList;
-            }
-            return linkedList;
         }
 
         public void Display()

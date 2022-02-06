@@ -16,7 +16,7 @@ namespace HashTable
             {
                 if (hashTable.Exists(word))
                 {
-                    hashTable.Add(word.ToLower(), hashTable.Get(word) + 1);
+                    hashTable.Add(word.ToLower(), hashTable.Get(word.ToLower()) + 1);
                 }
                 else
                 {
