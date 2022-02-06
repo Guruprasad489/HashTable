@@ -25,10 +25,10 @@ namespace HashTable
             }
             Console.WriteLine("Displaying after Add operatopn:");
             hashTable.Display();
-            string s = "or";
-            hashTable.Remove(s);
-            Console.WriteLine("After removing an item- {0}:",s);
-            hashTable.Display();
+            //string s = "or";
+            //hashTable.Remove(s);
+            //Console.WriteLine("After removing an item- {0}:",s);
+            //hashTable.Display();
         }
     }
 }
